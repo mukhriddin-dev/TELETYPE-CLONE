@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.post__title {
+  background: linear-gradient(90deg, #ff8a00 0%, #bd00ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
