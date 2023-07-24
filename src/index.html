@@ -21,11 +21,17 @@
         <title>Teletype</title>
     </head>
     <body>
+
         <div class="modal-wrapper w-screen h-screen grid place-content-center">
+            
+            <ul class="flex mx-auto gap-x-2 w-[80%] mb-4">
+                <li class="grow"><button class="change-btn bg-indigo-500 w-full px-3 py-2 text-white font-semibold rounded-lg focus:bg-indigo-400 shadow-xl">SIGN UP</button></li>
+                <li class="grow"><button class="change-btn bg-indigo-500 w-full px-3 py-2 text-white font-semibold rounded-lg focus:bg-indigo-400 shadow-xl">SIGN IN</button></li>
+            </ul>
 
             <div class="modal-content w-[500px] shadow-lg rounded-xl p-10">
 
-                <div class="p-4">
+                <div class="p-4 tab-item">
 
                    <h3 class="text-center text-xl uppercase text-gray-600 font-semibold my-3">Registration:</h3>
 
@@ -38,17 +44,34 @@
                    </form>
 
                 </div>
+
+                <div class="p-4 tab-item">
+
+                   <h3 class="text-center text-xl uppercase text-gray-600 font-semibold my-3">Authorization:</h3>
+
+                   <form action="#">
+
+                     <input type="text" required maxlength="20" class="p-3 mb-3 border rounded-lg w-full" placeholder="Enter @username" >
+                     <input type="password" required class="p-3 mb-3 border rounded-lg w-full" placeholder="Enter your password" >
+
+                     <button class="bg-indigo-600 text-white font-semibold  p-3 w-full rounded-lg focus:bg-indigo-400 ">SIGN IN</button>
+                   
+                 </form>
+
+                </div>
+                
+
+
             </div>
         </div>
 
         <!-- --------------- header -------------- -->
         <header class="shadow-lg py-5 px-7 bg-white backdrop-blur-md">
             <nav class="flex justify-between items-center">
+               
                 <a href="#"><img src="../src/assets/images/logo.svg" alt="logo" /></a>
 
-                <button
-                    class="bg-indigo-600 focus:ring-indigo-500 focus:ring-4 p-4 text-white font-semibold rounded-lg text-xs"
-                >
+                <button class="bg-indigo-600 focus:ring-indigo-500 focus:ring-4 p-4 text-white font-semibold rounded-lg text-xs">
                     Join
                 </button>
             </nav>
@@ -107,4 +130,5 @@
             </section>
         </main>
     </body>
+    <script type="module" src="./index.js"></script>
 </html>
