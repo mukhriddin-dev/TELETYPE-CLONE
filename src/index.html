@@ -70,14 +70,39 @@
         </div>
 
         <!-- --------------- header -------------- -->
-        <header class="shadow-lg py-5 px-7 bg-white backdrop-blur-md">
-            <nav class="flex justify-between items-center">
+        <header class="shadow-lg py-7 px-7 bg-white backdrop-blur-md">
+            <nav class="flex justify-between items-center relative">
                
                 <a href="#"><img src="../src/assets/images/logo.svg" alt="logo" /></a>
 
-                <button id="openModal" class="bg-indigo-600 focus:ring-indigo-500 focus:ring-4 p-4 text-white font-semibold rounded-lg text-xs">
+                <!-- dropdown -->
+
+                <button class="menu hidden">
+                    <i class="bx bx-menu text-3xl"></i>
+                </button>
+
+                <ul class="dropdown absolute right-0 top-14 shadow-lg hidden border bg-white">
+
+
+                    <li class="border px-3 py-1">
+                        <a href="./profile.html" class="text-gray-600 w-full flex items-center gap-x-2 justify-between hover:text-indigo-500" > 
+                            <strong id="user_info"></strong> <i class="bx bx-user text-2xl"></i>
+                        </a>
+                    </li>
+
+                    <li class="border px-3 py-1">
+                        <button class="text-gray-600 w-full flex items-center gap-x-2 justify-between hover:text-indigo-500" id="logout">
+                             <strong>Logout</strong> <i class="bx bx-power-off text-2xl"></i>
+                        </button>
+                    </li>
+                </ul> 
+
+                <!-- dropdown end -->
+
+                <button id="openModal" class=" bg-indigo-600 focus:ring-indigo-500 focus:ring-4 p-4 text-white font-semibold rounded-lg text-xs">
                     Join
                 </button>
+
             </nav>
         </header>
         <!-- --------------- header end -------------- -->

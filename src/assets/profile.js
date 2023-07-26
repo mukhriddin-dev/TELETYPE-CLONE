@@ -30,3 +30,11 @@ hideContent();
 showContent(localStorage.getItem("active_index") || 0);
 
 $("#user_title").innerText = `Blogs ${localStorage.getItem("username")}`;
+
+
+
+window.addEventListener("DOMContentLoaded", () => {
+    if (!localStorage.getItem("token")) {
+        window.location.href = "./index.html";
+    }
+});
