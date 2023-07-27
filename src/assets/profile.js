@@ -84,7 +84,10 @@ function listRender(state, selector) {
         state?.forEach(() => {
                 const card = document.createElement("div");
                 card.classList.add("card");
-                card.innerHTML = `<img src="https://picsum.photos/id/211/300/300"><h1>Lorem </h1>`;
+                card.innerHTML = `
+                <img src="https://picsum.photos/id/211/300/300">
+                <h1>Lorem </h1>
+                `;
                 $("#" + selector).append(card);
         })
     } else {
@@ -95,59 +98,19 @@ function listRender(state, selector) {
 
 
 
-// function blogRender(state) {
+
+
+
+
+
+
+
+
+
+
+
+
    
-
-//     if (state.length) {
-//         state?.forEach(() => {
-//             const card = document.createElement("div");
-//             card.classList.add("card");
-//             card.innerHTML = `<img src="https://picsum.photos/id/211/300/300"><h1>Lorem </h1>`;
-//             $("#blog").append(card);
-//         });
-//     }
-// }
-
-// function follwersRender(state) {
-//     if (state.length) {
-//         state?.forEach(() => {
-//             const card = document.createElement("div");
-//             card.classList.add("card");
-//             card.innerHTML = `<img src="https://picsum.photos/id/211/300/300"><h1>Lorem </h1>`;
-//             $("#wollowers").append(card);
-//         });
-//     }
-// }
-
-
-
-// function follwingRender(state) {
-//     if (state.length) {
-//         state?.forEach(() => {
-//             const card = document.createElement("div");
-//             card.classList.add("card");
-//             card.innerHTML = `<img src="https://picsum.photos/id/211/300/300"><h1>Lorem </h1>`;
-//             $("#wollowing").append(card);
-//         });
-//     }
-// }
-
-
-
-
-
-
-
-
-
-
-
-    // const card = document.createElement("div");
-    //       card.classList.add("card");
-    //       card.innerHTML = `<img src="https://picsum.photos/id/211/300/300"><h1>Lorem </h1>`;
-    
-    //       $('#posts').append(card)
-
 
 
 
