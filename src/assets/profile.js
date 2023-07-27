@@ -46,17 +46,15 @@ window.addEventListener("DOMContentLoaded", () => {
 let id = localStorage.getItem("user");
 
 async function getUser() {
-
     try {
         const response = await fetch(`https://nest-blog-qdsa.onrender.com/api/user/${id}`);
         const result = await response.json();
-        console.log(result)
+        console.log(result);
         dataRender(result);
 
-        listRender(result.blog , 'posts');
-        listRender(result.followers, 'followers');
-        listRender(result.followings, 'following');
-        
+        listRender(result.blog, "posts");
+        listRender(result.followers, "followers");
+        listRender(result.followings, "following");
     } catch (err) {
         console.log(err.message);
     } finally {
@@ -69,48 +67,83 @@ getUser();
 // ----------------- profile fetching data end ------------------------
 
 function dataRender(state) {
-    console.log(state)
+    console.log(state);
     if (state) {
-        $('#user_name').textContent = state.username;
-        $('#full_name').textContent = state.full_name;
+        $("#user_name").textContent = state.username;
+        $("#full_name").textContent = state.full_name;
     }
 }
 
-
 function listRender(state, selector) {
- 
     if (state.length) {
-      
-        state?.forEach(() => {
-                const card = document.createElement("div");
-                card.classList.add("card");
-                card.innerHTML = `
-                <img src="https://picsum.photos/id/211/300/300">
-                <h1>Lorem </h1>
+        state?.forEach((el) => {
+            const card = document.createElement("div");
+            card.classList.add("card");
+            card.innerHTML = `
+                     <div class="post_item border relative shadow-md hover:shadow-xl duration-150 font-['inter'] rounded-lg p-4">
+                          
+                           <div class="flex absolute right-3 gap-x-3">
+                                 <button type="button" data-del="${
+                                     el.id
+                                 }" class="bg-red-500 delete-post  w-8 h-8 rounded-lg">
+                                    <i data-del="${el.id}" class="bx bx-trash delete-post text-xl text-white"></i>
+                                 </button>
+
+                                  <button type="button" class="bg-blue-500 w-8 h-8 rounded-lg">
+                                     <i class="bx bxs-edit text-xl text-white"></i>
+                                  </button>
+                           </div>
+
+
+                            <h2 class="post__title text-3xl font-bold leading-[39px] mb-5">
+                               ${el.title}
+                            </h2>
+
+                            <p class="post__text mb-[25.5px] leading-[25.5px] text-[17px] font-normal">
+                                ${el.body?.substring(0, 256)} . . .
+                            </p>
+
+     
+                            <strong class="mb-[10px] leading-[25.5px]"> ● ${localStorage.getItem("username")}</strong>
+
+                            <div class="flex items-center gap-x-3 my-4">
+                                <span>${el.createdAt.substring(0, 10)}</span>
+                                <i class="bx bx-show"></i>
+                                <span>${el.views}</span>
+                            </div>
+                        </div>
                 `;
-                $("#" + selector).append(card);
-        })
+            $("#" + selector).append(card);
+        });
     } else {
-        $('#'+selector).innerHTML = `<h1 class='text-center'>${selector.toUpperCase()} NOT FOUND</h1>`;
-   }
+        $("#" + selector).innerHTML = `<h1 class='text-center'>${selector.toUpperCase()} NOT FOUND</h1>`;
+    }
 }
 
+// ------------ delete posts --------------------
 
+function deletePosts(id) {
+    console.log(id);
+    if (id) {
+        fetch(`https://nest-blog-qdsa.onrender.com/api/blog/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+        })
+        .then((res) => res.json())
+        .then(() => {
+            alert("Post item deleted successfully");
+            window.location.reload();
+        });
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-   
-
-
-
+$("#posts").addEventListener("click", (e) => {
+    console.log("on clicked");
+    if (e.target.classList.contains("delete-post")) {
+        let uniqueID = e.target.getAttribute("data-del");
+        deletePosts(uniqueID);
+    }
+});
